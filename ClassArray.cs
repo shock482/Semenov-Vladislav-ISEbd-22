@@ -1,4 +1,5 @@
-﻿using System;
+﻿using laba2sem1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,14 +81,22 @@ namespace lab2sem1
         {
             defaultValue = defVal;
             places = new Dictionary<int, T>();
-            maxCount = size;
+            maxCount = 15;
         }
+
+       /* class ParkingOverflowException : Exception
+        {
+            public ParkingOverflowException() :
+                base("В магазине нет свободных мест")
+            { }
+        }*/
 
         public static int operator +(ClassArray<T> p, T rock)
         {
             if (p.places.Count == p.maxCount)
             {
-                return -1;
+                // return -1;
+                throw new ParkingOverflowException();
             }
             for (int i = 0; i < p.places.Count; i++)
             {
@@ -101,6 +110,13 @@ namespace lab2sem1
             return p.places.Count - 1;
         }
 
+       /* class ParkingIndexOutOfRangeException : Exception
+        {
+            public ParkingIndexOutOfRangeException() :
+                base("В магазине нет драгоценности по такому индексу")
+            { }
+        }*/
+
         public static T operator -(ClassArray<T> p, int index)
         {
             if (p.places.ContainsKey(index))
@@ -109,7 +125,8 @@ namespace lab2sem1
                 p.places.Remove(index);
                 return rock;
             }
-            return p.defaultValue;
+            // return p.defaultValue;
+            throw new ParkingIndexOutOfRangeException();
         }
 
         private bool CheckFreePlace(int index)

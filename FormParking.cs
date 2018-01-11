@@ -1,4 +1,6 @@
-﻿using System;
+﻿using laba2sem1;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +14,14 @@ namespace lab2sem1
 {
     public partial class FormParking : Form
     {
-
+        
         Parking parking;
         FormSelectRock form;
-
+        private Logger log;
         public FormParking()
         {
             InitializeComponent();
+           log = LogManager.GetCurrentClassLogger(); 
             parking = new Parking(5);
 
             for (int i = 1; i < 6; i++)
@@ -49,16 +52,20 @@ namespace lab2sem1
         {
             if (rock != null)
             {
+                try
+                { 
                 int place = parking.PutRockInParking(rock);
-                if (place > -1)
-                {
                     Draw();
                     MessageBox.Show("Ваше место: " + place);
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Камень не удалось положить");
+                    MessageBox.Show(ex.Message, "Ошибка переполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                      
             }
         }
 
@@ -85,21 +92,28 @@ namespace lab2sem1
                 string level = listBox1.Items[listBox1.SelectedIndex].ToString();
                 if (maskedTextBox1.Text != "")
                 {
+                    try
+                    { 
                     IRock rock = parking.GetRockInParking(Convert.ToInt32(maskedTextBox1.Text));
-                    if (rock != null)
-                    {
+                    
                         Bitmap bmp = new Bitmap(pictureBox2.Width, pictureBox2.Height);
                         Graphics gr = Graphics.FromImage(bmp);
                         rock.setPosition(15, 15);
                         rock.drawRock(gr);
                         pictureBox2.Image = bmp;
                         Draw();
+                    
                     }
-                    else
+                    catch(ParkingIndexOutOfRangeException ex)
                     {
-                        MessageBox.Show("Извините, на этом месте нет камня");
+                        MessageBox.Show(ex.Message, "Неверный номер", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Общая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                log.Info("Нажатие кнопки купить ");
             }        
         }
 
@@ -121,6 +135,7 @@ namespace lab2sem1
         {
             parking.LevelDown();
             listBox1.SelectedIndex = parking.getCurrentLevel;
+            log.Info("Переход на уровень ниже Текущий уровень: " + parking.getCurrentLevel);
             Draw();
         }
 
@@ -128,6 +143,7 @@ namespace lab2sem1
         {
             parking.LevelUp();
             listBox1.SelectedIndex = parking.getCurrentLevel;
+            log.Info("Переход на уровень выше Текущий уровень: " + parking.getCurrentLevel);
             Draw();
         }
 
@@ -136,6 +152,7 @@ namespace lab2sem1
             form = new FormSelectRock();
             form.AddEvent(AddRock);
             form.Show();
+            log.Info("Нажатие на заказ драгоценности ");
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
