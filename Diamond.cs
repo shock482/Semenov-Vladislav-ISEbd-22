@@ -5,10 +5,70 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace lab2sem1
 {
-    class Diamond : Rock
+    class Diamond : Rock, IComparable<Diamond>, IEquatable<Diamond>
     {
+        public int CompareTo(Diamond other)
+        {
+            var res = (this is Rock).CompareTo(other is Rock);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (inclusions != other.inclusions)
+            {
+                return inclusions.CompareTo(other.inclusions);
+            }
+            if (dopColor != other.dopColor)
+            {
+                return dopColor.Name.CompareTo(other.inclusions);
+            }
+            return 0;
+        }
+
+        public bool Equals(Diamond other)
+        {
+            var res = (this is Rock).Equals(other is Rock);
+            if (!res)
+            {
+                return res;
+            }
+            if (inclusions != other.inclusions)
+            {
+                return false;
+            }
+            if (dopColor != other.dopColor)
+            {
+                return false;
+            }
+            if (glow != other.glow)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Diamond DiamondObj = obj as Diamond;
+            if (DiamondObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(DiamondObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public Diamond(string info) : base (info)
         {

@@ -215,18 +215,21 @@ namespace lab2sem1
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            for (int i = 0; i < countPlaces; i++)
+            int i = 0;
+            foreach (var rock in parkingStages[currentLevel])
             {
-                var rock = parkingStages[currentLevel][i];
-                if (rock != null)
-                {
-                    rock.setPosition(5 + i / 5 * placeSizeWidth + 23, i % 5 * placeSizeHeight + 5);
-                    rock.drawRock(g);
-                }
+                rock.setPosition(5 + i / 5 * placeSizeWidth + 20, i % 5 * placeSizeHeight );
+                rock.drawRock(g);
+                i++;
             }
         }
 
-        public void DrawMarking(Graphics g)
+    public void Sort()
+    {
+        parkingStages.Sort();
+    }
+
+    public void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Bisque, 3);
             g.DrawRectangle(pen, 0, 0, (countPlaces / 5) * placeSizeHeight, 480);

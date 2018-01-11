@@ -8,8 +8,70 @@ using static lab2sem1.RockFormation;
 
 namespace lab2sem1
 {
-    class Rock : RockFormation
+    public class Rock : RockFormation, IComparable<Rock>, IEquatable<Rock>
     {
+        public int CompareTo(Rock other)
+        {
+            if (other == null) {
+                return 1;
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            
+            if (MaxKarat != other.MaxKarat)
+            {
+                return MaxKarat.CompareTo(other.MaxKarat);
+            }
+            if (ColorBody != other.ColorBody)
+            {
+                return ColorBody.Name.CompareTo(other.ColorBody);
+            }
+            return 0;
+        }
+
+        public bool Equals(Rock other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MaxKarat != other.MaxKarat)
+            {
+                return false;
+            }
+            if (ColorBody != other.ColorBody)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            Rock RockObj = obj as Rock;
+            if (RockObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(RockObj);
+            }       
+        }
+        public override int GetHashCode()
+        {
+            return MaxKarat.GetHashCode();
+        }
+
         public Rock(string info)
         {
             string[] strs = info.Split(';');
