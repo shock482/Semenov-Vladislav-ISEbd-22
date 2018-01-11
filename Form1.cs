@@ -24,10 +24,6 @@ namespace laba1sem1
         private Testo testo;
         private OvenOn ovenon;
 
-
-
-  //      internal Knife Knife { get => knife; set => knife = value; }
-
         public Form1()
         {
             InitializeComponent();
@@ -35,11 +31,6 @@ namespace laba1sem1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //knife = new Knife();
-            //oven = new Oven();
-            //ovenon = new OvenOn();
-            //forma = new Forma();
-           // miska = new Miska();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -79,11 +70,6 @@ namespace laba1sem1
                     MessageBox.Show("Яблок то нет!", "Ошибка логики", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                for (int i = 0; i < apple.Length; ++i)
-                {
-                   // Knife.Cut(apple[i]);
-                }
-
                 numericUpDown2.Enabled = false;
                 button1.Enabled = true;
                 MessageBox.Show("Порезали, можно кидать в форму", "Кухня", MessageBoxButtons.OK, MessageBoxIcon.Information);     
@@ -98,7 +84,6 @@ namespace laba1sem1
         private void button5_Click(object sender, EventArgs e)
         {
             eggs = new Eggs();
-            //eggs = new Eggs[Convert.ToInt32(numericUpDown4.Value)];
             eggs.Count = Convert.ToInt32(numericUpDown4.Value);
             if (eggs.Count > 0)
             {
@@ -115,7 +100,6 @@ namespace laba1sem1
         private void button6_Click(object sender, EventArgs e)
         {
             muka = new Muka();
-            //eggs = new Eggs[Convert.ToInt32(numericUpDown4.Value)];
             muka.Count = Convert.ToInt32(numericUpDown1.Value);
             if (muka.Count > 0)
             {
@@ -132,7 +116,6 @@ namespace laba1sem1
         private void button7_Click(object sender, EventArgs e)
         {
             sugar = new Sugar();
-            //eggs = new Eggs[Convert.ToInt32(numericUpDown4.Value)];
             sugar.Count = Convert.ToInt32(numericUpDown3.Value);
             if (sugar.Count > 0)
             {
