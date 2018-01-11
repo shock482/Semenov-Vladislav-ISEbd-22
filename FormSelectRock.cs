@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,15 +14,13 @@ namespace lab2sem1
     public partial class FormSelectRock : Form
     {
         IRock rock = null;
-
+        private Logger log;
         private IRock GetRock { get { return rock; } }
-
-        //public object AddRock { get; private set; }
 
         public FormSelectRock()
         {
             InitializeComponent();
-
+            log = LogManager.GetCurrentClassLogger();
             panelBlack.MouseDown += panelColor_MouseDown;
             panelGold.MouseDown += panelColor_MouseDown;
             panelGray.MouseDown += panelColor_MouseDown;
@@ -128,6 +127,7 @@ namespace lab2sem1
                 eventAddRock(rock);
             }
             Close();
+            log.Info("Добавление драгоценности в магазин ");
         }
 
         private void panelColor_MouseDown(object sender, MouseEventArgs e)
@@ -153,6 +153,11 @@ namespace lab2sem1
         private void labelBaseColor_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            log.Info("Нажатие кнопки отмены ");
         }
     }
 }
