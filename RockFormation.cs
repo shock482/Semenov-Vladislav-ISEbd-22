@@ -9,10 +9,6 @@ namespace laba2sem1
 {
     public abstract class RockFormation : IRock
     {
-        // internal object MaxRockWeight;
-
-        // public int MaxKarat { get; internal set; }
-
 
         protected float startPosX;
 
