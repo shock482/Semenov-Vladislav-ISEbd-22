@@ -9,9 +9,6 @@ namespace lab2sem1
 {
     public abstract class RockFormation : IRock
     {
-        // internal object MaxRockWeight;
-
-        // public int MaxKarat { get; internal set; }
         public virtual void setMainColor(Color color)
         {
             ColorBody = color;
