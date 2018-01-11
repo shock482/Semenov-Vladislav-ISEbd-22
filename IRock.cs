@@ -21,5 +21,7 @@ namespace lab2sem1
         int  getDiamond();
 
         void setMainColor(Color color);
+
+        string getInfo();
     }
 }

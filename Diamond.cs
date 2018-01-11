@@ -10,6 +10,26 @@ namespace lab2sem1
     class Diamond : Rock
     {
 
+        public Diamond(string info) : base (info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 7)
+            {
+                MaxKarat = Convert.ToInt32(strs[0]);
+                MaxRockWeight = Convert.ToInt32(strs[1]);
+                Weight = Convert.ToInt32(strs[2]);
+                ColorBody = Color.FromName(strs[3]);
+                inclusions = Convert.ToBoolean(strs[4]);
+                glow = Convert.ToBoolean(strs[5]);
+                dopColor = Color.FromName(strs[6]);
+            }
+        }
+
+        public override string getInfo()
+        {
+            return MaxKarat + ";" + MaxRockWeight + ";" + Weight + ";" + ColorBody.Name + ";" + inclusions + ";" + glow + ";" + dopColor.Name;
+        }
+
         private bool inclusions;
 
         private bool glow;

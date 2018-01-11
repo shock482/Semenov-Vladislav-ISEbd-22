@@ -53,5 +53,6 @@ namespace lab2sem1
             return weight;
         }
 
+        public abstract string getInfo();
     }
 }

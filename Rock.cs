@@ -10,6 +10,26 @@ namespace lab2sem1
 {
     class Rock : RockFormation
     {
+        public Rock(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 4)
+            {
+                MaxKarat = Convert.ToInt32(strs[0]);
+                MaxRockWeight = Convert.ToInt32(strs[1]);
+                Weight = Convert.ToInt32(strs[2]);
+                ColorBody = Color.FromName(strs[3]);
+            }
+            this.weightDiam = 0;
+            Random rand = new Random();
+            startPosX = rand.Next(10, 200);
+            startPosY = rand.Next(10, 200);
+        }
+
+        public override string getInfo()
+        {
+            return MaxKarat + ";" + MaxRockWeight + ";" + Weight + ";" + ColorBody.Name;
+        }
 
         public override int MaxKarat
         {
