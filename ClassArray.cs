@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace lab2sem1
 {
 
+
     class ClassArray<T> : IEnumerator<T>, IEnumerable<T>, IComparable<ClassArray<T>>
     {
-
         private Dictionary<int, T> places;
         private int maxCount;
         private T defaultValue;

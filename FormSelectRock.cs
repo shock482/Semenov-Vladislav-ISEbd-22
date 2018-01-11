@@ -17,8 +17,6 @@ namespace lab2sem1
         private Logger log;
         private IRock GetRock { get { return rock; } }
 
-        //public object AddRock { get; private set; }
-
         public FormSelectRock()
         {
             InitializeComponent();
