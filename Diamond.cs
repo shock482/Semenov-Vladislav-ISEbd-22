@@ -35,7 +35,6 @@ namespace lab2sem1
         {
            if (inclusions)
             {
-               // Pen penB = new Pen(color);
                 Pen penY = new Pen(dopColor);
                 Pen penB = new Pen(color);
                 Brush brushB = new SolidBrush(dopColor);
