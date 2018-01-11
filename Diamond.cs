@@ -14,7 +14,6 @@ namespace lab2sem1
 
         private bool glow;
 
-       // public Color dopColor { protected set; get; }
         private Color dopColor;
         public Color color;
 
@@ -55,7 +54,6 @@ namespace lab2sem1
                 g.FillEllipse(brushD, startPosX + 8, startPosY + 35, 5, 5);
                 g.FillEllipse(brushY, startPosX + 21, startPosY + 25, 5, 5);
                 g.FillEllipse(brushD, startPosX + 18, startPosY + 45, 5, 5);
-             //   Pen penD = new Pen(color);
                 g.DrawRectangle(penB, startPosX + 11, startPosY + 31, 31, 31);
                 g.DrawLine(penB, startPosX + 11, startPosY + 31, startPosX + 26, startPosY + 11);
                 g.DrawLine(penB, startPosX + 26, startPosY + 11, startPosX + 41, startPosY + 31);
