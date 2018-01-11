@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba2sem1
+namespace lab2sem1
 {
     class Parking
     {

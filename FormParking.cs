@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace laba2sem1
+namespace lab2sem1
 {
     public partial class FormParking : Form
     {
+
         Parking parking;
+        FormSelectRock form;
 
         public FormParking()
         {
@@ -36,10 +38,6 @@ namespace laba2sem1
                 parking.Draw(gr);
                 pictureBox1.Image = bmp;
             }
-
-            
-        
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -47,15 +45,20 @@ namespace laba2sem1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddRock(IRock rock)
         {
-            ColorDialog dialog = new ColorDialog();
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (rock != null)
             {
-                var rock = new Rock(100, 5, 200, dialog.Color);
                 int place = parking.PutRockInParking(rock);
-                Draw();
-                MessageBox.Show("Ваша полка: " + place);
+                if (place > -1)
+                {
+                    Draw();
+                    MessageBox.Show("Ваше место: " + place);
+                }
+                else
+                {
+                    MessageBox.Show("Камень не удалось положить");
+                }
             }
         }
 
@@ -67,7 +70,7 @@ namespace laba2sem1
                 ColorDialog dialogDop = new ColorDialog();
                 if (dialogDop.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var rock = new Diamond(100, 5, 200, Color.Brown, true, true, dialogDop.Color);
+                    var rock = new Diamond(100, 5, 200, dialog.Color, true, true, dialogDop.Color);
                     int place = parking.PutRockInParking(rock);
                     Draw();
                     MessageBox.Show("Ваша полка: " + place);
@@ -97,9 +100,21 @@ namespace laba2sem1
                         MessageBox.Show("Извините, на этом месте нет камня");
                     }
                 }
-            }
+            }        
+        }
 
-            
+        private event myDel eventAddRock;
+
+        private void AddEvent(myDel ev)
+        {
+            if (eventAddRock == null)
+            {
+                eventAddRock = new myDel(ev);
+            }
+            else
+            {
+                eventAddRock += ev;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -114,6 +129,13 @@ namespace laba2sem1
             parking.LevelUp();
             listBox1.SelectedIndex = parking.getCurrentLevel;
             Draw();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            form = new FormSelectRock();
+            form.AddEvent(AddRock);
+            form.Show();
         }
     }
 }

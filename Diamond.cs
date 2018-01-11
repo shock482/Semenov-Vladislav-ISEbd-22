@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba2sem1
+namespace lab2sem1
 {
     class Diamond : Rock
     {
@@ -14,10 +14,14 @@ namespace laba2sem1
 
         private bool glow;
 
-        //количество граней
-
+       // public Color dopColor { protected set; get; }
         private Color dopColor;
-        private Color color;
+        public Color color;
+
+        public void setDopColor(Color color)
+        {
+            dopColor = color;
+        }
 
         public Diamond(int maxKarat, int maxRockWeight, double weight, Color color, bool inclusions, bool glow, Color dopColor) : 
             base(maxKarat, maxRockWeight, weight, color)
@@ -32,25 +36,26 @@ namespace laba2sem1
         {
            if (inclusions)
             {
-                Pen penB = new Pen(Color.Brown);
-                Pen penY = new Pen(Color.Yellow);
-                Brush brushB = new SolidBrush(Color.Brown);
+               // Pen penB = new Pen(color);
+                Pen penY = new Pen(dopColor);
+                Pen penB = new Pen(color);
+                Brush brushB = new SolidBrush(dopColor);
                 Brush brushY = new SolidBrush(Color.Yellow);
                 Brush brushG = new SolidBrush(Color.Green);
                 Brush brushD = new SolidBrush(dopColor);
 
                 g.DrawEllipse(penY, startPosX + 10, startPosY + 40, 5, 5);
                 g.DrawEllipse(penY, startPosX + 13, startPosY + 35, 5, 5);            
-                g.FillEllipse(brushY, startPosX + 5, startPosY + 30, 5, 5);
-                g.FillEllipse(brushY, startPosX + 20, startPosY + 25, 5, 5);
-                g.FillEllipse(brushD, startPosX + 41, startPosY + 50, 5, 5);
+                g.DrawEllipse(penY, startPosX + 5, startPosY + 30, 5, 5);
+                g.DrawEllipse(penY, startPosX + 20, startPosY + 25, 5, 5);
+                g.DrawEllipse(penY, startPosX + 41, startPosY + 50, 5, 5);
                 g.FillEllipse(brushG, startPosX + 48, startPosY + 45, 5, 5);
                 g.FillEllipse(brushD, startPosX + 31, startPosY + 20, 5, 5);
                 g.FillEllipse(brushB, startPosX + 20, startPosY + 15, 5, 5);
-                g.FillEllipse(brushG, startPosX + 8, startPosY + 35, 5, 5);
+                g.FillEllipse(brushD, startPosX + 8, startPosY + 35, 5, 5);
                 g.FillEllipse(brushY, startPosX + 21, startPosY + 25, 5, 5);
                 g.FillEllipse(brushD, startPosX + 18, startPosY + 45, 5, 5);
-                Pen penD = new Pen(color);
+             //   Pen penD = new Pen(color);
                 g.DrawRectangle(penB, startPosX + 11, startPosY + 31, 31, 31);
                 g.DrawLine(penB, startPosX + 11, startPosY + 31, startPosX + 26, startPosY + 11);
                 g.DrawLine(penB, startPosX + 26, startPosY + 11, startPosX + 41, startPosY + 31);
@@ -64,7 +69,7 @@ namespace laba2sem1
 
            if (glow)
             {
-                Pen penB = new Pen(Color.BlueViolet);
+                Pen penB = new Pen(dopColor);
                 g.DrawLine(penB, startPosX, startPosY, startPosX - 25, startPosY + 30);
                 g.DrawLine(penB, startPosX + 15, startPosY + 17, startPosX - 45, startPosY - 50);
                 g.DrawLine(penB, startPosX + 70, startPosY + 15, startPosX + 30, startPosY + 59);

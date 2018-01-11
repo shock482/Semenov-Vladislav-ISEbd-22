@@ -4,9 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static laba2sem1.RockFormation;
+using static lab2sem1.RockFormation;
 
-namespace laba2sem1
+namespace lab2sem1
 {
     class Rock : RockFormation
     {
@@ -96,7 +96,7 @@ namespace laba2sem1
 
         protected virtual void drawrock(Graphics g)
         {
-            Pen penB = new Pen(Color.Brown);
+            Pen penB = new Pen(ColorBody);
             Pen penY = new Pen(Color.Yellow);
             Brush brushB = new SolidBrush(Color.Brown);
             Brush brushY = new SolidBrush(Color.Yellow);

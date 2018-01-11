@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba2sem1
+namespace lab2sem1
 {
     public abstract class RockFormation : IRock
     {
         // internal object MaxRockWeight;
 
         // public int MaxKarat { get; internal set; }
-
+        public virtual void setMainColor(Color color)
+        {
+            ColorBody = color;
+        }
 
         protected float startPosX;
 

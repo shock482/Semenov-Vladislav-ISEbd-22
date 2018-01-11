@@ -59,6 +59,12 @@
     <Compile Include="FormParking.Designer.cs">
       <DependentUpon>FormParking.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelectRock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectRock.Designer.cs">
+      <DependentUpon>FormSelectRock.cs</DependentUpon>
+    </Compile>
     <Compile Include="IRock.cs" />
     <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormParking.resx">
       <DependentUpon>FormParking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelectRock.resx">
+      <DependentUpon>FormSelectRock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

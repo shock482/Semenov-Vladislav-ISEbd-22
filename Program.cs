@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace laba2sem1
+namespace lab2sem1
 {
+
+    public delegate void myDel(lab2sem1.IRock rock);
+
     static class Program
     {
         /// <summary>
