@@ -4,7 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+namespace laba1sem1
+
 namespace laba2sem1
+
 {
     static class Program
     {
