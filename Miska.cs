@@ -13,21 +13,7 @@ namespace laba1sem1
         private Sugar sugar;
         private Muka muka;
 
-        //public void AddEggs(Eggs e)
-        //{
-        //    for (int i = 0; i < eggs.Length; ++i)
-        //    {
-        //        if(eggs[i] == null)
-        //        {
-        //            eggs[i] = e;
-        //            return;
-        //        }
-        //    }
-        //}
-
         public bool State { get; set; }
-
-      
 
         public void AddSugar(Sugar s)
         {
