@@ -8,9 +8,6 @@ namespace laba1sem1
 {
     class Knife
     {
-
-        //public bool State { set; get; }
-
        public void Cut(Apple a)
         {
             if (a.Not_Cut)
@@ -18,14 +15,5 @@ namespace laba1sem1
                 a.Not_Cut = false;
             }
         }
-
-        //public void Cut(Apple a)
-        //{
-        //    if (State)
-        //    {
-        //        a.Not_Cut = false;
-        //    }
-        //}
-
     }
 }
